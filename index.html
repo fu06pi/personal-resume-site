@@ -18,6 +18,7 @@
         <div class="nav-links">
           <a href="#about">關於</a>
           <a href="#projects">專案</a>
+          <a href="#quant-progress">量化進度</a>
           <a href="#skills">技能</a>
           <a href="#contact">聯絡</a>
         </div>
@@ -110,6 +111,70 @@
               <li>台指 / 微台策略流程分析</li>
               <li>Pine / MT5 策略轉換研究</li>
               <li>回測資料與執行架構盤點</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="quant-progress" class="section">
+        <p class="eyebrow">Quant Progress · Updated 2026-05-26</p>
+        <h2>最新量化系統進度</h2>
+        <p class="section-lead">
+          近期工作聚焦在多市場策略營運：MT5 XAUUSD 實盤監控、OKX 小帳戶 paper trading、X / 社群策略情報轉成可測試候選，以及台指期交易流程整理。核心原則是先回測、再 paper、最後才考慮實盤。
+        </p>
+
+        <div class="progress-grid">
+          <article class="progress-card highlight">
+            <span class="tag">MT5 / XAUUSD</span>
+            <h3>Prop Portfolio Trend Strategy</h3>
+            <p>
+              MT5 supervisor 已能啟動 XAUUSD trend portfolio 策略，並加入冷啟保護：策略啟動後至少等待一根完整 K 線再允許新倉，降低重啟瞬間誤判風險。
+            </p>
+            <ul class="metric-list">
+              <li><strong>Live safety</strong><span>daily DD / total DD / profit target / cooldown gates</span></li>
+              <li><strong>Warmup</strong><span>startup-warmup-bars = 1</span></li>
+              <li><strong>Ops</strong><span>supervisor + bridge + structured logs</span></li>
+            </ul>
+          </article>
+
+          <article class="progress-card danger">
+            <span class="tag">OKX / Paper Backtest</span>
+            <h3>April 2026 Sample: Failed Gate</h3>
+            <p>
+              將現行 OKX Stone/Crypto_Cat fusion strategy 用 2026-04 上個月樣本回測後，結果未通過上線門檻。策略已被標記為需要降頻與 regime filter，而不是恢復自動交易。
+            </p>
+            <div class="kpi-grid">
+              <div><strong>-10.06%</strong><span>monthly return</span></div>
+              <div><strong>0.291</strong><span>profit factor</span></div>
+              <div><strong>15.9%</strong><span>win rate</span></div>
+              <div><strong>-10.46%</strong><span>max DD</span></div>
+            </div>
+            <p class="note">結論：alt long 追勢與小幣假突破是主要虧損來源；下一版需加入 BTC/ETH regime filter、提高分數門檻、限制弱幣。</p>
+          </article>
+
+          <article class="progress-card">
+            <span class="tag">X / Social Research</span>
+            <h3>Social Alpha → Research-only Cards</h3>
+            <p>
+              X 書籤與推特研究已進入策略情報管線，但社群內容只作為候選池與敘事層，不會直接變成交易訊號。
+            </p>
+            <ul class="metric-list">
+              <li><strong>199</strong><span>X bookmarks audited</span></li>
+              <li><strong>53</strong><span>A-grade items converted to cards</span></li>
+              <li><strong>research_only</strong><span>missing explicit invalidation = no execution</span></li>
+            </ul>
+          </article>
+
+          <article class="progress-card">
+            <span class="tag">Risk Engineering</span>
+            <h3>Hard Gates Before Automation</h3>
+            <p>
+              目前所有交易系統都優先處理風控與可觀測性：回撤停機、連虧冷卻、paper state、dashboard、CSV trade log，以及策略版本紀錄。
+            </p>
+            <ul class="metric-list">
+              <li><strong>OKX</strong><span>single-position, 100U paper-first, loss-streak cooldown</span></li>
+              <li><strong>MT5</strong><span>full close-deal logs and restart warmup</span></li>
+              <li><strong>Workflow</strong><span>backtest → paper → review → controlled activation</span></li>
             </ul>
           </article>
         </div>
