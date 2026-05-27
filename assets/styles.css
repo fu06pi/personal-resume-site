@@ -207,6 +207,41 @@ h3 { font-size: 1.35rem; }
   font-weight: 800;
 }
 
+/* Timeline / Weekly Log */
+.timeline {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 28px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+.timeline-date {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+.timeline-body h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.timeline-body ul {
+  padding-left: 18px;
+  margin: 0;
+}
+.timeline-body li {
+  color: var(--muted);
+  padding: 3px 0;
+}
+
 .skill-cloud { display: flex; flex-wrap: wrap; gap: 12px; }
 .skill-cloud span {
   padding: 10px 14px;
@@ -246,6 +281,7 @@ footer { color: var(--muted); padding: 34px 0 46px; text-align: center; }
   .hero-grid, .split, .project-grid, .progress-grid, .principles { grid-template-columns: 1fr; }
   .hero-grid { padding-top: 42px; }
   .profile-card { transform: none; }
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
 }
 
 @media (max-width: 520px) {
