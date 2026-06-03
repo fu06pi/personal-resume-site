@@ -19,6 +19,7 @@
           <a href="#about">關於</a>
           <a href="#projects">專案</a>
           <a href="#quant-progress">量化進度</a>
+          <a href="#mt5-architecture">MT5 架構</a>
           <a href="#weekly-log">週記</a>
           <a href="#skills">技能</a>
           <a href="#contact">聯絡</a>
@@ -225,6 +226,124 @@
               <li><strong>Safety</strong><span>max DD / daily loss hard stops</span></li>
               <li><strong>Env</strong><span>simulation only — no live deployment</span></li>
             </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="mt5-architecture" class="section">
+        <p class="eyebrow">MT5 Strategy & Code Architecture</p>
+        <h2>MT5 策略與程式碼架構時間線</h2>
+        <p class="section-lead">
+          這套系統從早期 MQL5 EA 實驗，逐步整理成 Python live strategy + supervisor + active plan + research backtest 的架構。現在的重點不是堆更多策略，而是把「研究、部署、監控、回滾」分層，讓每次策略切換都有紀錄、備份與可驗證結果。
+        </p>
+
+        <div class="progress-grid">
+          <article class="progress-card highlight">
+            <span class="tag">Runtime Core</span>
+            <h3>Live 執行層</h3>
+            <ul class="metric-list">
+              <li><strong>Strategy</strong><span><code>strategies/mt5_xauusd_trend_strategy.py</code></span></li>
+              <li><strong>Supervisor</strong><span><code>supervisors/mt5_strategy_fleet_supervisor.py</code></span></li>
+              <li><strong>Plan</strong><span><code>auto_quant/active_plan.json</code> 控制啟停、參數、generation</span></li>
+              <li><strong>Bridge</strong><span>MT5 terminal + pymt5linux on <code>127.0.0.1:18812</code></span></li>
+            </ul>
+          </article>
+
+          <article class="progress-card highlight">
+            <span class="tag">State / Logs</span>
+            <h3>可觀測性與回滾層</h3>
+            <ul class="metric-list">
+              <li><strong>State</strong><span><code>auto_quant/state/*.json</code> 記錄 DD baseline、pause、cooldown</span></li>
+              <li><strong>Logs</strong><span><code>auto_quant/logs/*.log</code> 追蹤 signal、risk loop、entry/exit</span></li>
+              <li><strong>Backups</strong><span><code>auto_quant/backups/*</code> 每次 live 參數改動前備份</span></li>
+              <li><strong>Cron</strong><span>Telegram 狀態通知 + message retention，降低 topic 噪音</span></li>
+            </ul>
+          </article>
+
+          <article class="progress-card">
+            <span class="tag">Research Layer</span>
+            <h3>研究與回測層</h3>
+            <ul class="metric-list">
+              <li><strong>Weekly</strong><span><code>research_xauusd_weekly_complement_backtest.py</code></span></li>
+              <li><strong>Complement</strong><span><code>research_xauusd_trend_plus_complement_*.py</code></span></li>
+              <li><strong>Session Test</strong><span><code>research_xauusd_london_ny_session_backtest.py</code></span></li>
+              <li><strong>Reports</strong><span><code>backtest_reports_*/</code> 保存 CSV / Markdown 結果</span></li>
+            </ul>
+          </article>
+
+          <article class="progress-card">
+            <span class="tag">Quality Gates</span>
+            <h3>測試與安全層</h3>
+            <ul class="metric-list">
+              <li><strong>Tests</strong><span><code>tests/test_xauusd_trend_strategy_risk_controls.py</code></span></li>
+              <li><strong>Compile</strong><span><code>py_compile</code> / pytest before critical code changes</span></li>
+              <li><strong>Limits</strong><span>daily DD、total DD、max lots、per-order lots、cooldown</span></li>
+              <li><strong>Policy</strong><span>live 改動先備份；research-only 測試不得碰 <code>active_plan</code></span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">2026-04</div>
+            <div class="timeline-body">
+              <h3>MQL5 EA 實驗期</h3>
+              <ul>
+                <li>盤點 MT5 <code>MQL5/Experts</code> 目錄，整理早期 EA：Institutional / PropFirm / MicroScalp 等。</li>
+                <li>修正 Institutional_EA_v2 trailing stop 過早鎖利問題，將優化紀錄同步到 Obsidian / Zettelkasten。</li>
+                <li>把前 8 個 MQL5 EA port 成 Pine Script v5，開始建立「策略邏輯可遷移」的研究流程。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2026-05 上旬</div>
+            <div class="timeline-body">
+              <h3>Python live strategy + supervisor 成形</h3>
+              <ul>
+                <li>核心策略移到 Python：<code>mt5_xauusd_trend_strategy.py</code>，透過 pymt5linux bridge 連 MT5。</li>
+                <li>建立 <code>active_plan.json</code> 作為策略啟停與參數來源，避免直接手改 live command。</li>
+                <li>加入 supervisor 管理策略子程序，逐步分離 terminal / bridge / supervisor / strategy child 四個健康層。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2026-05 中旬</div>
+            <div class="timeline-body">
+              <h3>Prop / FTMO 風控規則導入</h3>
+              <ul>
+                <li>XAUUSD trend portfolio 加入 daily DD、total DD、profit target、cooldown、max trades 等硬風控。</li>
+                <li>加入 startup warmup bars，避免策略剛重啟就用不完整 context 開倉。</li>
+                <li>建立 close-deal log 與狀態查詢流程，讓 Telegram 狀態回報能追溯 realized PnL 與 pause reason。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2026-05 下旬</div>
+            <div class="timeline-body">
+              <h3>Live 參數治理與防呆加固</h3>
+              <ul>
+                <li>加入 auto half-close、fee-cover offset、trailing stable minutes、same-direction cooldown。</li>
+                <li>拆分 total max lots 與 per-order lot cap，避免單筆下單過大。</li>
+                <li>加入 Best Day / concentration guard、foreign-position 檢查與 account-switch recovery 流程。</li>
+                <li>MT5 系統以 Git 保存，2026-05-31 發布初版策略系統快照。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2026-06</div>
+            <div class="timeline-body">
+              <h3>多袖套研究：從 trend-only 轉向 portfolio sleeves</h3>
+              <ul>
+                <li>回測 false-breakout complement：確認單獨策略正期望，但 simple overlay 不適合。</li>
+                <li>確立平行獨立 sleeves 架構：獨立 process、獨立 magic、共享總 exposure cap。</li>
+                <li>Momentum Surfer V2 做週級穩定度清理：M5 版本淘汰，M15 no-trail 暫列研究候選。</li>
+                <li>live 端切到低風險 complement sleeve，重點改為保護帳戶與收集穩定性資料。</li>
+              </ul>
+            </div>
           </article>
         </div>
       </section>
