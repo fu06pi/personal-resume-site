@@ -122,38 +122,53 @@
       </section>
 
       <section id="quant-progress" class="section">
-        <p class="eyebrow">Quant Progress · Updated 2026-05-27</p>
+        <p class="eyebrow">Quant Progress · Updated 2026-06-03</p>
         <h2>最新量化系統進度</h2>
         <p class="section-lead">
-          近期工作聚焦在多市場策略營運：MT5 XAUUSD Prop 帳號守帳、FTMO demo 測試、OKX 歸檔改進、社群策略情報轉成可測試候選，以及台指期交易流程整理。核心原則：先回測 → 再 paper → 最後才考慮實盤。
+          近期工作聚焦在多市場策略營運：MT5 XAUUSD 帳號守帳、FTMO demo 風控驗證、互補策略 sleeve 研究、Momentum Surfer 週級回測淘汰，以及 OKX 歸檔改進。核心原則：先回測 → 再 paper → 最後才考慮實盤。
         </p>
 
         <div class="progress-grid">
           <article class="progress-card highlight">
             <span class="tag">MT5 / XAUUSD</span>
-            <h3>Prop Firm Challenge 通關 → 守帳</h3>
+            <h3>FTMO Demo：趨勢袖套停用，切到低風險互補袖套</h3>
             <p>
-              GetLeveraged-Trade $100k demo 帳號已通關 Prop Firm Challenge，目前進入守帳（verification）階段。策略以 trend-following 為核心，搭配 auto half-close（浮盈 >$2000 減倉）與冷啟保護。
+              6 月初在 XAUUSD 趨勢袖套出現明顯回撤後，系統改為低風險 SELL-only false-breakout complement sleeve。目標不是硬追回虧損，而是降低 exposure、保留觀測資料，並確認 supervisor / bridge / risk gate 在換策略後仍能穩定運作。
             </p>
             <ul class="metric-list">
-              <li><strong>Account</strong><span>184640 / GetLeveraged-Trade ~$100k demo</span></li>
-              <li><strong>Magic</strong><span>26052031</span></li>
-              <li><strong>Risk</strong><span>0.75% per trade · 5 ATR SL</span></li>
-              <li><strong>Auto half-close</strong><span>intra-bar profit > $2000</span></li>
-              <li><strong>Status</strong><span>Verification phase — guarding equity</span></li>
+              <li><strong>Plan</strong><span>prop_portfolio_complement_fb_sell_only</span></li>
+              <li><strong>Direction</strong><span>XAUUSD M5 · SELL-only</span></li>
+              <li><strong>Magic</strong><span>26052032</span></li>
+              <li><strong>Risk</strong><span>0.15% per trade · max 0.6 lots · 0.2 lots per order</span></li>
+              <li><strong>Status</strong><span>flat / no pending orders at latest check</span></li>
             </ul>
           </article>
 
           <article class="progress-card highlight">
-            <span class="tag">FTMO / Demo</span>
-            <h3>FTMO Demo 帳號驗證中</h3>
+            <span class="tag">Backtesting / Weekly Stability</span>
+            <h3>Momentum Surfer V2 週級回測：M5 淘汰，M15 保留觀察</h3>
             <p>
-              FTMO demo 帳號已開通，正在驗證策略在 FTMO 規則下的適配性。確認前會先以模擬盤跑完整週期，不急於入金。
+              重新整理 2026-02 至 2026-05 的 Momentum Surfer V2 trade CSV，改用週級穩定度檢查。結果顯示 M5 V2 版本不適合回到 live；只有 M15 no-trail 有保留為小權重 sleeve 的研究價值。
             </p>
             <ul class="metric-list">
-              <li><strong>Phase</strong><span>Demo verification — 確認規則適配</span></li>
-              <li><strong>Rule check</strong><span>daily DD / max DD / news filter</span></li>
-              <li><strong>Decision</strong><span>通過驗證後再評估是否入金 $520</span></li>
+              <li><strong>M5 V2 no-trail</strong><span>-18.33% return · PF 0.925 · max DD -28.80%</span></li>
+              <li><strong>M5 V2 trailing</strong><span>-58.03% return · PF 0.659 ·淘汰</span></li>
+              <li><strong>M15 no-trail</strong><span>+24.46% return · PF 1.330 · max DD -6.77%</span></li>
+              <li><strong>Decision</strong><span>不啟用 M5 V2；M15 no-trail 需更長樣本再評估</span></li>
+            </ul>
+          </article>
+
+          <article class="progress-card highlight">
+            <span class="tag">Portfolio Research</span>
+            <h3>Trend + Complement：只接受平行獨立 sleeves</h3>
+            <p>
+              針對「反向左側抄底 / false-breakout complement」做 76 週 XAUUSD M5 回測，確認互補策略單獨具備可觀察價值，但不能用 simple overlay 混進原策略。若要組合，只能用獨立 process、獨立 magic、共享總 exposure cap 的平行 sleeve 架構。
+            </p>
+            <ul class="metric-list">
+              <li><strong>Trend only</strong><span>+44.16% return · PF 1.065 · max DD -12.50%</span></li>
+              <li><strong>Complement only</strong><span>+13.95% return · PF 1.446 · max DD -2.94%</span></li>
+              <li><strong>Parallel sleeves</strong><span>+64.97% return · PF 1.085 · max DD -13.12%</span></li>
+              <li><strong>Decision</strong><span>simple overlay 不用；平行 sleeves 才可進一步 demo</span></li>
             </ul>
           </article>
 
@@ -193,7 +208,7 @@
             </p>
             <ul class="metric-list">
               <li><strong>OKX</strong><span>single-position, 100U paper-first, loss-streak cooldown</span></li>
-              <li><strong>MT5</strong><span>full close-deal logs, restart warmup, half-close guard</span></li>
+              <li><strong>MT5</strong><span>full close-deal logs, restart warmup, plan switch logs, cron retention</span></li>
               <li><strong>Workflow</strong><span>backtest → paper → review → controlled activation</span></li>
             </ul>
           </article>
@@ -222,6 +237,21 @@
         </p>
 
         <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">2026-06-03</div>
+            <div class="timeline-body">
+              <h3>MT5 風控切換 + 週級回測清理</h3>
+              <ul>
+                <li>FTMO demo 檢查：terminal / bridge / supervisor / strategy child 正常，帳戶無持倉、無掛單</li>
+                <li>趨勢袖套在回撤後停用，改跑低風險 SELL-only false-breakout complement sleeve</li>
+                <li>互補策略 76 週回測：單獨 PF 1.446、max DD -2.94%；組合只能走平行獨立 sleeves</li>
+                <li>Momentum Surfer V2 週級回測：M5 版本淘汰；M15 no-trail 暫列研究候選</li>
+                <li>MT5 cronjob 訊息加入 retention：未來只保留最新 5 則，降低 Telegram topic 噪音</li>
+                <li>決策：不急著恢復高風險 trend sleeve，先用低風險 sleeve 收集穩定性資料</li>
+              </ul>
+            </div>
+          </article>
+
           <article class="timeline-item">
             <div class="timeline-date">2026-05-27</div>
             <div class="timeline-body">
@@ -310,7 +340,7 @@
     </main>
 
     <footer>
-      <p>© <span id="year"></span> Chain. Built with static HTML/CSS. Last updated: 2026-05-27</p>
+      <p>© <span id="year"></span> Chain. Built with static HTML/CSS. Last updated: 2026-06-03</p>
     </footer>
   </div>
   <script>
