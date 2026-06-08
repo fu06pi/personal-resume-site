@@ -123,39 +123,38 @@
       </section>
 
       <section id="quant-progress" class="section">
-        <p class="eyebrow">Quant Progress · Updated 2026-06-03</p>
+        <p class="eyebrow">Quant Progress · Updated 2026-06-08</p>
         <h2>最新量化系統進度</h2>
         <p class="section-lead">
-          近期工作聚焦在多市場策略營運：MT5 XAUUSD 帳號守帳、FTMO demo 風控驗證、互補策略 sleeve 研究、Momentum Surfer 週級回測淘汰，以及 OKX 歸檔改進。核心原則：先回測 → 再 paper → 最後才考慮實盤。
+          近期工作聚焦在「研究與實盤分離」：MT5 XAUUSD 已可用 active_plan / supervisor 做策略暫停與回滾；ICT / SMC 類策略完成 Python MT5 dry-run 與一年 M5 回測，結果未過 live 門檻；OKX paper trading 恢復小幅正收益但仍停留在模擬驗證；TradingView IFVG 腳本轉成可回測 strategy 版本。核心原則：先回測 → 再 paper → 最後才考慮實盤。
         </p>
 
         <div class="progress-grid">
           <article class="progress-card highlight">
             <span class="tag">MT5 / XAUUSD</span>
-            <h3>FTMO Demo：趨勢袖套停用，切到低風險互補袖套</h3>
+            <h3>FTMO Demo：live 策略暫停，保留 supervisor / bridge 監控</h3>
             <p>
-              6 月初在 XAUUSD 趨勢袖套出現明顯回撤後，系統改為低風險 SELL-only false-breakout complement sleeve。目標不是硬追回虧損，而是降低 exposure、保留觀測資料，並確認 supervisor / bridge / risk gate 在換策略後仍能穩定運作。
+              6 月初完成趨勢 sleeve、chop gate、加倉與獲利全平冷卻機制測試後，主策略依使用者決策暫停。這次重點是把策略啟停、備份、回滾、reload 驗證都做成可追蹤流程，而不是在回撤後盲目加風險。
             </p>
             <ul class="metric-list">
-              <li><strong>Plan</strong><span>prop_portfolio_complement_fb_sell_only</span></li>
-              <li><strong>Direction</strong><span>XAUUSD M5 · SELL-only</span></li>
-              <li><strong>Magic</strong><span>26052032</span></li>
-              <li><strong>Risk</strong><span>0.15% per trade · max 0.6 lots · 0.2 lots per order</span></li>
-              <li><strong>Status</strong><span>flat / no pending orders at latest check</span></li>
+              <li><strong>Status</strong><span>strategy disabled by active_plan · supervisor remains available</span></li>
+              <li><strong>Risk update</strong><span>profit-close at +1500 USD then 60-minute pause implemented</span></li>
+              <li><strong>Ops</strong><span>generation-based reload · backups before live config changes</span></li>
+              <li><strong>Policy</strong><span>no auto-resume after manual pause / risk intervention</span></li>
             </ul>
           </article>
 
           <article class="progress-card highlight">
-            <span class="tag">Backtesting / Weekly Stability</span>
-            <h3>Momentum Surfer V2 週級回測：M5 淘汰，M15 保留觀察</h3>
+            <span class="tag">ICT / SMC Research</span>
+            <h3>LuxAlgo SMC 概念移植：Python MT5 dry-run 成功，回測未過門檻</h3>
             <p>
-              重新整理 2026-02 至 2026-05 的 Momentum Surfer V2 trade CSV，改用週級穩定度檢查。結果顯示 M5 V2 版本不適合回到 live；只有 M15 no-trail 有保留為小權重 sleeve 的研究價值。
+              將 Liquidity sweep → internal CHoCH → FVG / OB retest 的 ICT/SMC 反轉邏輯做成 Python MT5 策略並完成 dry-run；另用一年 XAUUSD M5 cache 做 research backtest。結果顯示 FVG retest 明顯拖累，OB only 較好但仍為負期望，因此不加入 live plan。
             </p>
             <ul class="metric-list">
-              <li><strong>M5 V2 no-trail</strong><span>-18.33% return · PF 0.925 · max DD -28.80%</span></li>
-              <li><strong>M5 V2 trailing</strong><span>-58.03% return · PF 0.659 ·淘汰</span></li>
-              <li><strong>M15 no-trail</strong><span>+24.46% return · PF 1.330 · max DD -6.77%</span></li>
-              <li><strong>Decision</strong><span>不啟用 M5 V2；M15 no-trail 需更長樣本再評估</span></li>
+              <li><strong>Baseline</strong><span>176 trades · -13.08% return · PF 0.55 · max DD 13.25%</span></li>
+              <li><strong>OB only</strong><span>131 trades · -5.76% return · PF 0.73 · max DD 6.95%</span></li>
+              <li><strong>FVG only</strong><span>-11.49% return · PF 0.59 ·淘汰</span></li>
+              <li><strong>Decision</strong><span>不上 live；只保留 OB-only 嚴格版作後續研究</span></li>
             </ul>
           </article>
 
@@ -186,19 +185,19 @@
             </ul>
           </article>
 
-          <article class="progress-card danger">
-            <span class="tag">OKX / Archived</span>
-            <h3>OKX April Backtest — 歸檔改進</h3>
+          <article class="progress-card">
+            <span class="tag">OKX / Paper Trading</span>
+            <h3>OKX 本地模擬交易：恢復小幅正收益，仍維持 paper-first</h3>
             <p>
-              OKX Stone/Crypto_Cat fusion strategy 4 月回測未通過上線門檻，已歸檔。下一版需加入 BTC/ETH regime filter、提高分數門檻、限制弱幣。
+              15 分鐘 paper cycle 正常運作，帳戶目前小幅正收益；但樣本仍小、費用占比偏高，下一步不是放大，而是提高進場門檻、加入 symbol loss cooldown 與費用/換手控制。
             </p>
             <div class="kpi-grid">
-              <div><strong>-10.06%</strong><span>monthly return</span></div>
-              <div><strong>0.291</strong><span>profit factor</span></div>
-              <div><strong>15.9%</strong><span>win rate</span></div>
-              <div><strong>-10.46%</strong><span>max DD</span></div>
+              <div><strong>102.83</strong><span>USDT paper equity</span></div>
+              <div><strong>+3.32</strong><span>realized PnL</span></div>
+              <div><strong>48.28%</strong><span>win rate</span></div>
+              <div><strong>29</strong><span>closed trades</span></div>
             </div>
-            <p class="note">歸檔原因：alt long 追勢與小幣假突破是主要虧損來源。待 regime filter 完成後重啟回測。</p>
+            <p class="note">Private OKX key 目前 401 invalid；公開資料與 dry-run 不受影響，但不具備 live readiness。</p>
           </article>
 
           <article class="progress-card">
@@ -215,16 +214,16 @@
           </article>
 
           <article class="progress-card">
-            <span class="tag">Strategy R&D</span>
-            <h3>Doomsday 高攻策略原型</h3>
+            <span class="tag">TradingView / Pine</span>
+            <h3>IFVG Sniper Entry Engine → TradingView Strategy</h3>
             <p>
-              高槓桿模擬盤專用策略原型：5 ATR 止損、10:1 盈虧比、10% 浮盈觸發滾倉。內嵌硬性風控（最大回撤停機 / 日內虧損停機），僅限模擬環境驗證。
+              將 IFVG indicator 改成可回測的 TradingView strategy 版本，保留 hidden FVG memory、IFVG inversion filter、ATR SL / RR TP 與視覺化資訊，讓原本只能看訊號的腳本可以進入策略測試流程。
             </p>
             <ul class="metric-list">
-              <li><strong>SL</strong><span>5 ATR · RR 10:1</span></li>
-              <li><strong>Pyramid</strong><span>10% unrealized profit trigger</span></li>
-              <li><strong>Safety</strong><span>max DD / daily loss hard stops</span></li>
-              <li><strong>Env</strong><span>simulation only — no live deployment</span></li>
+              <li><strong>Engine</strong><span>Hidden FVG → IFVG inversion → filtered entry</span></li>
+              <li><strong>Risk</strong><span>ATR-based stop · selectable RR target</span></li>
+              <li><strong>Use</strong><span>TradingView backtest / alert candidate, not live execution</span></li>
+              <li><strong>Next</strong><span>用實際市場與週期驗證勝率、DD、交易數</span></li>
             </ul>
           </article>
         </div>
@@ -341,7 +340,8 @@
                 <li>回測 false-breakout complement：確認單獨策略正期望，但 simple overlay 不適合。</li>
                 <li>確立平行獨立 sleeves 架構：獨立 process、獨立 magic、共享總 exposure cap。</li>
                 <li>Momentum Surfer V2 做週級穩定度清理：M5 版本淘汰，M15 no-trail 暫列研究候選。</li>
-                <li>live 端切到低風險 complement sleeve，重點改為保護帳戶與收集穩定性資料。</li>
+                <li>live 端切到低風險 complement sleeve，後續依決策暫停策略，保留 supervisor / bridge 監控。</li>
+                <li>新增 profit-close 全平冷卻機制：浮盈達門檻後全平並暫停新進場，取代舊半平倉流程。</li>
               </ul>
             </div>
           </article>
@@ -356,6 +356,20 @@
         </p>
 
         <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">2026-06-08</div>
+            <div class="timeline-body">
+              <h3>研究與實盤分離：策略暫停、ICT/SMC 回測、OKX paper 檢查</h3>
+              <ul>
+                <li>MT5 XAUUSD 主策略完成獲利全平 + 60 分鐘冷卻機制測試，並依決策暫停 active_plan；未自動恢復。</li>
+                <li>ICT / SMC Python MT5 策略完成 dry-run，但一年 XAUUSD M5 回測未過門檻：baseline -13.08%、PF 0.55。</li>
+                <li>OB-only 版本相對較好但仍負期望：-5.76%、PF 0.73；決策是不加入 live plan。</li>
+                <li>OKX paper cycle 正常，小幅正收益；下一步聚焦提高門檻、降低換手與 symbol loss cooldown。</li>
+                <li>TradingView IFVG indicator 已轉為 strategy 版本，可用於回測與後續告警候選。</li>
+              </ul>
+            </div>
+          </article>
+
           <article class="timeline-item">
             <div class="timeline-date">2026-06-03</div>
             <div class="timeline-body">
@@ -459,7 +473,7 @@
     </main>
 
     <footer>
-      <p>© <span id="year"></span> Chain. Built with static HTML/CSS. Last updated: 2026-06-03</p>
+      <p>© <span id="year"></span> Chain. Built with static HTML/CSS. Last updated: 2026-06-08</p>
     </footer>
   </div>
   <script>
