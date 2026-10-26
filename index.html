@@ -1,483 +1,233 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chain | AI × Quant Trading Resume</title>
-  <meta name="description" content="Chain 的個人履歷網站：AI 自動化、量化交易、策略研究、MT5 / Python 系統開發。" />
-  <meta property="og:title" content="Chain | AI × Quant Trading Resume" />
-  <meta property="og:description" content="AI 自動化、量化交易、策略研究、MT5 / Python 系統開發。" />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111f28">
+  <meta name="description" content="藍振虔（Chain Lan）的金融研究與市場作品集。實踐大學財務金融學系，聚焦證券交易、市場研究、策略驗證與風險管理。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="藍振虔 Chain Lan | Finance & Market Research">
+  <meta property="og:description" content="從市場觀察，走向可驗證的金融決策。財金背景、金融市場研究與可追溯的作品紀錄。">
+  <meta property="og:url" content="https://fu06pi.github.io/personal-resume-site/">
+  <title>藍振虔 Chain Lan — Finance & Market Research</title>
+  <link rel="canonical" href="https://fu06pi.github.io/personal-resume-site/">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <div class="site-shell">
-    <header class="hero">
-      <nav class="nav">
-        <a class="brand" href="#top">Chain</a>
-        <div class="nav-links">
-          <a href="#about">關於</a>
-          <a href="#projects">專案</a>
-          <a href="#quant-progress">量化進度</a>
-          <a href="#mt5-architecture">MT5 架構</a>
-          <a href="#weekly-log">週記</a>
-          <a href="#skills">技能</a>
-          <a href="#contact">聯絡</a>
-        </div>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="identity" href="#top" aria-label="Chain Lan，回到首頁">
+        <span class="identity-mark" aria-hidden="true">CL<span>.</span></span>
+        <span class="identity-name">CHAIN LAN <small>FINANCE & RESEARCH</small></span>
+      </a>
+      <button class="menu-button" type="button" aria-label="開啟導覽選單" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="navigation" id="primary-nav" aria-label="主要導覽">
+        <a href="#work">精選專案</a>
+        <a href="#about">個人背景</a>
+        <a href="#approach">研究方法</a>
+        <a href="#timeline">近期紀錄</a>
+        <a href="#contact" class="nav-contact">聯絡我 <span aria-hidden="true">↗</span></a>
       </nav>
+    </div>
+  </header>
 
-      <section id="top" class="hero-grid">
-        <div>
-          <p class="eyebrow">AI Automation · Quant Trading · Research Systems</p>
-          <h1>把交易想法變成可驗證、可迭代、可自動化的系統。</h1>
-          <p class="hero-text">
-            我專注於 AI 輔助交易研究、MT5 / Python 策略開發、回測流程設計，以及將交易策略從概念、Pine Script、社群資訊轉換成可追蹤的量化實驗。
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">查看專案</a>
-            <a class="button" href="#weekly-log">最近更新</a>
+  <main id="main">
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow light"><span class="signal-dot"></span> FINANCE STUDENT · MARKET RESEARCH · TAIWAN</p>
+          <h1>從市場觀察，<br>走向<span class="marked">可驗證</span>的<br>金融決策<span class="period">.</span></h1>
+          <p class="hero-lead">我是藍振虔（Chain），就讀實踐大學財務金融學系。關注證券交易、總體市場與風險管理，習慣把觀點拆解成假說，再透過數據與紀錄檢驗，而不是只看單次結果。</p>
+          <div class="hero-cta">
+            <a class="btn btn-lime" href="#work">探索研究作品 <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://github.com/fu06pi" target="_blank" rel="noopener noreferrer">查看 GitHub <span aria-hidden="true">↗</span></a>
           </div>
+          <div class="hero-subline"><span>2026.10 / Portfolio edition</span><span>金融與證券實習方向</span></div>
         </div>
-        <aside class="profile-card">
-          <div class="avatar">C</div>
-          <h2>Chain</h2>
-          <p>AI × Quant Trading Builder</p>
-          <ul>
-            <li>📍 Taiwan / Remote</li>
-            <li>⚙️ Python · MT5 · TradingView</li>
-            <li>📊 Backtesting · Risk Control</li>
-            <li>🤖 AI-assisted Research</li>
-          </ul>
-        </aside>
-      </section>
-    </header>
+        <div class="hero-visual" aria-label="研究流程示意：提出假說、設計測試、回顧證據，非交易績效圖">
+          <div class="visual-top"><span>RESEARCH DESK / 001</span><span class="status"><span class="status-dot"></span> ITERATIVE</span></div>
+          <div class="market-grid" aria-hidden="true">
+            <svg viewBox="0 0 520 242" role="img" aria-label="概念性研究路徑線條，並非實際市場數據" preserveAspectRatio="none">
+              <defs><linearGradient id="pathGradient" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#a3c35c"/><stop offset="1" stop-color="#e5ff9d"/></linearGradient></defs>
+              <path class="grid-rule" d="M0 48H520 M0 96H520 M0 144H520 M0 192H520 M65 0V242 M130 0V242 M195 0V242 M260 0V242 M325 0V242 M390 0V242 M455 0V242"/>
+              <path class="line-muted" d="M8 185 L71 166 L125 182 L177 139 L238 148 L294 116 L349 137 L404 91 L463 98 L511 57"/>
+              <path class="line-primary" d="M8 204 L71 194 L125 175 L177 188 L238 145 L294 151 L349 111 L404 117 L463 67 L511 44"/>
+              <circle cx="238" cy="145" r="6" class="plot-dot"/><circle cx="349" cy="111" r="6" class="plot-dot"/><circle cx="463" cy="67" r="6" class="plot-dot"/>
+            </svg>
+            <div class="plot-label">IDEA <span>→</span> EVIDENCE <span>→</span> DECISION</div>
+          </div>
+          <div class="visual-footer">
+            <div><span class="micro-index">01 / FRAME</span><strong>問題定義</strong></div>
+            <div><span class="micro-index">02 / TEST</span><strong>驗證假說</strong></div>
+            <div><span class="micro-index">03 / REVIEW</span><strong>復盤修正</strong></div>
+          </div>
+          <p class="visual-caption">示意圖僅呈現研究流程，不代表實際市場走勢或回測績效。</p>
+        </div>
+      </div>
+      <div class="hero-edge"><div class="container"><span>CURIOUS ABOUT MARKETS.</span><span>DISCIPLINED ABOUT EVIDENCE.</span><span>OPEN TO LEARNING.</span></div></div>
+    </section>
 
-    <main>
-      <section id="about" class="section split">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>關於我</h2>
-        </div>
-        <div class="content-card">
-          <p>
-            我正在建立一套結合 AI、量化研究與自動交易的個人交易系統。工作重點不是追求單次神奇策略，而是建立能持續測試、記錄、比較、淘汰與迭代的流程。
-          </p>
-          <p>
-            目前主要研究方向包含 XAUUSD / MT5 策略、台股期貨回測、TradingView Pine 策略轉譯、社群策略情報萃取，以及自動化風控與策略監控。
-          </p>
-          <p>
-            2026 Q2 里程碑：成功通關 Prop Firm Challenge（GetLeveraged-Trade $100k demo），進入守帳階段。持續驗證策略穩定性與風控完備性。
-          </p>
-        </div>
-      </section>
+    <section class="intro-band" aria-label="研究方向">
+      <div class="container intro-layout">
+        <div class="intro-count"><span>FOCUS / 2026</span><strong>03</strong></div>
+        <p>以<strong>金融市場理解</strong>為核心，結合<strong>可驗證的研究流程</strong>，逐步累積<strong>風險與決策判斷</strong>。</p>
+        <div class="intro-keywords"><span>SECURITIES</span><span>MACRO & MARKET</span><span>RISK AWARENESS</span></div>
+      </div>
+    </section>
 
-      <section id="projects" class="section">
-        <p class="eyebrow">Selected Projects</p>
-        <h2>代表專案</h2>
+    <section class="section work-section" id="work">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 — SELECTED WORK</p><h2>把研究過程<br><em>完整攤開。</em></h2></div>
+          <p class="heading-description">不是每個實驗都有漂亮的結果。這裡記錄正在推進的工作、已知限制，以及下一步需要回答的問題。</p>
+        </div>
+        <div class="filter-row" role="group" aria-label="篩選專案">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">所有作品</button>
+          <button class="filter" type="button" data-filter="market" aria-pressed="false">市場研究</button>
+          <button class="filter" type="button" data-filter="trading" aria-pressed="false">策略與風控</button>
+          <button class="filter" type="button" data-filter="academic" aria-pressed="false">財金專題</button>
+        </div>
         <div class="project-grid">
-          <article class="project-card">
-            <span class="tag">MT5 / Python</span>
-            <h3>XAUUSD Auto-Quant Strategy Lab</h3>
-            <p>使用 MT5、Python、active_plan 與 supervisor 管理策略實驗，追蹤損益、回撤、策略版本與實盤狀態。</p>
-            <ul>
-              <li>自動策略啟停與風控停機</li>
-              <li>Momentum / Breakout / Sweep 類策略研究</li>
-              <li>交易紀錄、淨損益與 drawdown 追蹤</li>
-              <li>Prop Firm Challenge 通關 ✅</li>
-            </ul>
+          <article class="project project-featured" data-category="market" id="project-taiex">
+            <div class="project-top"><span class="number">PROJECT / 01</span><span class="project-state in-progress">研究與開發中</span></div>
+            <div class="project-body">
+              <div class="project-copy">
+                <p class="project-kicker">TAIWAN EQUITY · FUTURES · FORECAST RESEARCH</p>
+                <h3>台股 OHLC 量化預測<br>與盤前／收盤驗證</h3>
+                <p>從每日市場情境假說出發，研究以加權指數與台指期的開、高、低、收四價為目標，將盤前預測快照與收盤事實配對，檢查模型是否真正改善，而非只挑選成功日期。</p>
+                <div class="project-attributes"><span>TAIEX / TX</span><span>Walk-forward</span><span>ARIMA / TimesFM 研究</span></div>
+                <a class="text-link" href="https://github.com/fu06pi/tw-market-scenario-engine" target="_blank" rel="noopener noreferrer">查閱程式與研究規範 <span aria-hidden="true">↗</span></a>
+              </div>
+              <div class="research-diagram" aria-label="研究設計流程：資料截止、預測快照、收盤驗證">
+                <p class="diagram-header">FORECAST VALIDATION / DESIGN</p>
+                <div class="diagram-step"><span>01</span><div><b>資料截止與品質</b><small>避免使用事後資料</small></div></div>
+                <div class="diagram-connector" aria-hidden="true"></div>
+                <div class="diagram-step"><span>02</span><div><b>盤前數值快照</b><small>先保存，再撰寫假說</small></div></div>
+                <div class="diagram-connector" aria-hidden="true"></div>
+                <div class="diagram-step"><span>03</span><div><b>收盤誤差驗證</b><small>比較基準與失敗日</small></div></div>
+                <p class="diagram-disclaimer">目前為研究設計與開發，未宣稱模型已達目標準確率。</p>
+              </div>
+            </div>
           </article>
 
-          <article class="project-card">
-            <span class="tag">Trading Research</span>
-            <h3>Strategy Intelligence Pipeline</h3>
-            <p>從 X / 社群文章擷取策略想法，轉成可測試框架，並輸出 Markdown / CSV 研究紀錄。</p>
-            <ul>
-              <li>社群策略蒐集與摘要</li>
-              <li>策略假說拆解</li>
-              <li>研究報告與 backtest candidate 產出</li>
-            </ul>
+          <article class="project" data-category="trading">
+            <div class="project-top"><span class="number">PROJECT / 02</span><span class="project-state evidence">具歷史研究紀錄</span></div>
+            <p class="project-kicker">XAUUSD · BACKTESTING · RISK</p>
+            <h3>MT5 交易策略與<br>風控驗證</h3>
+            <p>研究黃金策略、策略組合與資金控管，關注交易成本、回撤、啟停條件與「哪些版本不應進入實盤」。程式實作包含 AI 協作，重點在研究決策與結果檢視。</p>
+            <div class="outcome-block"><span>2026 / 06 歷史測試案例</span><strong>PF 0.55 <span>· 未通過研究門檻</span></strong><small>ICT / SMC baseline：176 筆、報酬 -13.08%；不作為實盤績效。</small></div>
+            <a class="text-link" href="https://github.com/fu06pi/mt5-auto-trading-system" target="_blank" rel="noopener noreferrer">檢視專案紀錄 <span aria-hidden="true">↗</span></a>
           </article>
 
-          <article class="project-card">
-            <span class="tag">OKX / Crypto</span>
-            <h3>OKX Perp Autotrader</h3>
-            <p>OKX 永續合約自動交易框架，支援 paper-first / dry-run 模式、net_mode/cross margin，以及虧損冷卻機制。</p>
-            <ul>
-              <li>小帳戶 paper trading 驗證</li>
-              <li>連虧 cooldown 與 regime filter</li>
-              <li>April 2026 回測未過門檻 → 歸檔改進中</li>
-            </ul>
+          <article class="project" data-category="academic">
+            <div class="project-top"><span class="number">PROJECT / 03</span><span class="project-state">課程專題</span></div>
+            <p class="project-kicker">EQUITY MARKETS · POLICY IMPACT</p>
+            <h3>川普新政對台灣<br>電子股股價影響分析</h3>
+            <p>以政策與金融市場的互動為題，整理美國政策變化如何透過產業預期、供應鏈與投資人評價，影響台灣電子股的研究問題與分析框架。</p>
+            <div class="project-detail"><span>研究主題</span><strong>政策衝擊 × 產業 × 股票市場</strong></div>
+            <span class="availability-note">校內專題文件未在此公開全文。</span>
           </article>
 
-          <article class="project-card">
-            <span class="tag">TTB / Taiwan Market</span>
-            <h3>TTB Futures Backtesting Workflow</h3>
-            <p>台股期貨交易流程，包含策略設定、資料來源、回測與 Wine / TTB API 整合。</p>
-            <ul>
-              <li>台指 / 微台策略流程分析</li>
-              <li>Pine / MT5 策略轉換研究</li>
-              <li>回測資料與執行架構盤點</li>
-            </ul>
+          <article class="project" data-category="market trading">
+            <div class="project-top"><span class="number">PROJECT / 04</span><span class="project-state">持續研究</span></div>
+            <p class="project-kicker">NQ / GC · MARKET STRUCTURE</p>
+            <h3>交易時段與<br>市場結構假說</h3>
+            <p>探索開盤區間突破、VWAP、流動性與交易後的 MAE／MFE 分析。著重如何界定訊號、分辨行情情境、記錄交易前後的資訊與偏誤。</p>
+            <div class="project-detail"><span>研究方法</span><strong>OR · VWAP · MAE / MFE · 分段回測</strong></div>
+            <span class="availability-note">研究題目與方法；未宣稱已獲得穩定獲利。</span>
           </article>
         </div>
-      </section>
+        <div class="work-footnote"><span>TRANSPARENCY NOTE</span><p>數值及版本以各專案所載的歷史研究紀錄為準。公開頁面不揭露交易帳戶、API 金鑰或私人資料；研究成果不構成投資建議。</p></div>
+      </div>
+    </section>
 
-      <section id="quant-progress" class="section">
-        <p class="eyebrow">Quant Progress · Updated 2026-06-08</p>
-        <h2>最新量化系統進度</h2>
-        <p class="section-lead">
-          近期工作聚焦在「研究與實盤分離」：MT5 XAUUSD 已可用 active_plan / supervisor 做策略暫停與回滾；ICT / SMC 類策略完成 Python MT5 dry-run 與一年 M5 回測，結果未過 live 門檻；OKX paper trading 恢復小幅正收益但仍停留在模擬驗證；TradingView IFVG 腳本轉成可回測 strategy 版本。核心原則：先回測 → 再 paper → 最後才考慮實盤。
-        </p>
-
-        <div class="progress-grid">
-          <article class="progress-card highlight">
-            <span class="tag">MT5 / XAUUSD</span>
-            <h3>FTMO Demo：live 策略暫停，保留 supervisor / bridge 監控</h3>
-            <p>
-              6 月初完成趨勢 sleeve、chop gate、加倉與獲利全平冷卻機制測試後，主策略依使用者決策暫停。這次重點是把策略啟停、備份、回滾、reload 驗證都做成可追蹤流程，而不是在回撤後盲目加風險。
-            </p>
-            <ul class="metric-list">
-              <li><strong>Status</strong><span>strategy disabled by active_plan · supervisor remains available</span></li>
-              <li><strong>Risk update</strong><span>profit-close at +1500 USD then 60-minute pause implemented</span></li>
-              <li><strong>Ops</strong><span>generation-based reload · backups before live config changes</span></li>
-              <li><strong>Policy</strong><span>no auto-resume after manual pause / risk intervention</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card highlight">
-            <span class="tag">ICT / SMC Research</span>
-            <h3>LuxAlgo SMC 概念移植：Python MT5 dry-run 成功，回測未過門檻</h3>
-            <p>
-              將 Liquidity sweep → internal CHoCH → FVG / OB retest 的 ICT/SMC 反轉邏輯做成 Python MT5 策略並完成 dry-run；另用一年 XAUUSD M5 cache 做 research backtest。結果顯示 FVG retest 明顯拖累，OB only 較好但仍為負期望，因此不加入 live plan。
-            </p>
-            <ul class="metric-list">
-              <li><strong>Baseline</strong><span>176 trades · -13.08% return · PF 0.55 · max DD 13.25%</span></li>
-              <li><strong>OB only</strong><span>131 trades · -5.76% return · PF 0.73 · max DD 6.95%</span></li>
-              <li><strong>FVG only</strong><span>-11.49% return · PF 0.59 ·淘汰</span></li>
-              <li><strong>Decision</strong><span>不上 live；只保留 OB-only 嚴格版作後續研究</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card highlight">
-            <span class="tag">Portfolio Research</span>
-            <h3>Trend + Complement：只接受平行獨立 sleeves</h3>
-            <p>
-              針對「反向左側抄底 / false-breakout complement」做 76 週 XAUUSD M5 回測，確認互補策略單獨具備可觀察價值，但不能用 simple overlay 混進原策略。若要組合，只能用獨立 process、獨立 magic、共享總 exposure cap 的平行 sleeve 架構。
-            </p>
-            <ul class="metric-list">
-              <li><strong>Trend only</strong><span>+44.16% return · PF 1.065 · max DD -12.50%</span></li>
-              <li><strong>Complement only</strong><span>+13.95% return · PF 1.446 · max DD -2.94%</span></li>
-              <li><strong>Parallel sleeves</strong><span>+64.97% return · PF 1.085 · max DD -13.12%</span></li>
-              <li><strong>Decision</strong><span>simple overlay 不用；平行 sleeves 才可進一步 demo</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card">
-            <span class="tag">X / Social Research</span>
-            <h3>Social Alpha → Research-only Cards</h3>
-            <p>
-              X 書籤與推特研究已進入策略情報管線，但社群內容只作為候選池與敘事層，不會直接變成交易訊號。
-            </p>
-            <ul class="metric-list">
-              <li><strong>199</strong><span>X bookmarks audited</span></li>
-              <li><strong>53</strong><span>A-grade items converted to cards</span></li>
-              <li><strong>research_only</strong><span>missing explicit invalidation = no execution</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card">
-            <span class="tag">OKX / Paper Trading</span>
-            <h3>OKX 本地模擬交易：恢復小幅正收益，仍維持 paper-first</h3>
-            <p>
-              15 分鐘 paper cycle 正常運作，帳戶目前小幅正收益；但樣本仍小、費用占比偏高，下一步不是放大，而是提高進場門檻、加入 symbol loss cooldown 與費用/換手控制。
-            </p>
-            <div class="kpi-grid">
-              <div><strong>102.83</strong><span>USDT paper equity</span></div>
-              <div><strong>+3.32</strong><span>realized PnL</span></div>
-              <div><strong>48.28%</strong><span>win rate</span></div>
-              <div><strong>29</strong><span>closed trades</span></div>
-            </div>
-            <p class="note">Private OKX key 目前 401 invalid；公開資料與 dry-run 不受影響，但不具備 live readiness。</p>
-          </article>
-
-          <article class="progress-card">
-            <span class="tag">Risk Engineering</span>
-            <h3>Hard Gates Before Automation</h3>
-            <p>
-              目前所有交易系統都優先處理風控與可觀測性：回撤停機、連虧冷卻、paper state、dashboard、CSV trade log，以及策略版本紀錄。
-            </p>
-            <ul class="metric-list">
-              <li><strong>OKX</strong><span>single-position, 100U paper-first, loss-streak cooldown</span></li>
-              <li><strong>MT5</strong><span>full close-deal logs, restart warmup, plan switch logs, cron retention</span></li>
-              <li><strong>Workflow</strong><span>backtest → paper → review → controlled activation</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card">
-            <span class="tag">TradingView / Pine</span>
-            <h3>IFVG Sniper Entry Engine → TradingView Strategy</h3>
-            <p>
-              將 IFVG indicator 改成可回測的 TradingView strategy 版本，保留 hidden FVG memory、IFVG inversion filter、ATR SL / RR TP 與視覺化資訊，讓原本只能看訊號的腳本可以進入策略測試流程。
-            </p>
-            <ul class="metric-list">
-              <li><strong>Engine</strong><span>Hidden FVG → IFVG inversion → filtered entry</span></li>
-              <li><strong>Risk</strong><span>ATR-based stop · selectable RR target</span></li>
-              <li><strong>Use</strong><span>TradingView backtest / alert candidate, not live execution</span></li>
-              <li><strong>Next</strong><span>用實際市場與週期驗證勝率、DD、交易數</span></li>
-            </ul>
-          </article>
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="section-heading stack"><p class="eyebrow">02 — ABOUT</p><h2>背景可以跨領域，<br><em>判斷必須有依據。</em></h2><p>從理工學習經驗轉向財務金融，讓我更重視問題拆解、證據與風險邊界。長期職涯方向為銀行、證券市場與交易相關工作。</p></div>
+        <div class="about-list">
+          <div class="about-row"><span class="row-index">01 / EDUCATION</span><div><h3>實踐大學｜財務金融學系</h3><p>目前就讀，學習財務金融、經濟、會計與金融相關法規；規劃累積金融實務經驗並持續深造。</p></div></div>
+          <div class="about-row"><span class="row-index">02 / BACKGROUND</span><div><h3>跨理工與財金的學習路徑</h3><p>曾就讀國立中興大學機械工程學系。擅長以結構化方式整理複雜議題，持續建立市場分析能力。</p></div></div>
+          <div class="about-row"><span class="row-index">03 / CERTIFICATION</span><div><h3>金融市場常識與職業道德</h3><p>2026 年已通過測驗。證券、期貨及銀行相關專業資格仍持續準備，不將尚未取得的證照列為已通過。</p></div></div>
+          <div class="about-row"><span class="row-index">04 / CAREER</span><div><h3>朝證券交易與金融實務前進</h3><p>關注證券商、銀行、財富管理及市場相關實習，希望在實務環境中加強金融商品、風控與業務運作理解。</p></div></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="mt5-architecture" class="section">
-        <p class="eyebrow">MT5 Strategy & Code Architecture</p>
-        <h2>MT5 策略與程式碼架構時間線</h2>
-        <p class="section-lead">
-          這套系統從早期 MQL5 EA 實驗，逐步整理成 Python live strategy + supervisor + active plan + research backtest 的架構。現在的重點不是堆更多策略，而是把「研究、部署、監控、回滾」分層，讓每次策略切換都有紀錄、備份與可驗證結果。
-        </p>
-
-        <div class="progress-grid">
-          <article class="progress-card highlight">
-            <span class="tag">Runtime Core</span>
-            <h3>Live 執行層</h3>
-            <ul class="metric-list">
-              <li><strong>Strategy</strong><span><code>strategies/mt5_xauusd_trend_strategy.py</code></span></li>
-              <li><strong>Supervisor</strong><span><code>supervisors/mt5_strategy_fleet_supervisor.py</code></span></li>
-              <li><strong>Plan</strong><span><code>auto_quant/active_plan.json</code> 控制啟停、參數、generation</span></li>
-              <li><strong>Bridge</strong><span>MT5 terminal + pymt5linux on <code>127.0.0.1:18812</code></span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card highlight">
-            <span class="tag">State / Logs</span>
-            <h3>可觀測性與回滾層</h3>
-            <ul class="metric-list">
-              <li><strong>State</strong><span><code>auto_quant/state/*.json</code> 記錄 DD baseline、pause、cooldown</span></li>
-              <li><strong>Logs</strong><span><code>auto_quant/logs/*.log</code> 追蹤 signal、risk loop、entry/exit</span></li>
-              <li><strong>Backups</strong><span><code>auto_quant/backups/*</code> 每次 live 參數改動前備份</span></li>
-              <li><strong>Cron</strong><span>Telegram 狀態通知 + message retention，降低 topic 噪音</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card">
-            <span class="tag">Research Layer</span>
-            <h3>研究與回測層</h3>
-            <ul class="metric-list">
-              <li><strong>Weekly</strong><span><code>research_xauusd_weekly_complement_backtest.py</code></span></li>
-              <li><strong>Complement</strong><span><code>research_xauusd_trend_plus_complement_*.py</code></span></li>
-              <li><strong>Session Test</strong><span><code>research_xauusd_london_ny_session_backtest.py</code></span></li>
-              <li><strong>Reports</strong><span><code>backtest_reports_*/</code> 保存 CSV / Markdown 結果</span></li>
-            </ul>
-          </article>
-
-          <article class="progress-card">
-            <span class="tag">Quality Gates</span>
-            <h3>測試與安全層</h3>
-            <ul class="metric-list">
-              <li><strong>Tests</strong><span><code>tests/test_xauusd_trend_strategy_risk_controls.py</code></span></li>
-              <li><strong>Compile</strong><span><code>py_compile</code> / pytest before critical code changes</span></li>
-              <li><strong>Limits</strong><span>daily DD、total DD、max lots、per-order lots、cooldown</span></li>
-              <li><strong>Policy</strong><span>live 改動先備份；research-only 測試不得碰 <code>active_plan</code></span></li>
-            </ul>
-          </article>
+    <section class="section approach-section" id="approach">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">03 — HOW I WORK</p><h2>比起答案，<br><em>更在意判斷品質。</em></h2></div><p class="heading-description">把想法拆成能被否證的假說、明確定義限制，再讓紀錄決定是否繼續投入。</p></div>
+        <div class="method-grid">
+          <article class="method"><span class="method-num">01</span><div class="method-icon" aria-hidden="true">↗</div><h3>提出假說</h3><p>界定事件、標的、時間窗口與可能的反例；區分觀察、推論與尚待確認的訊息。</p><span>HYPOTHESIS</span></article>
+          <article class="method"><span class="method-num">02</span><div class="method-icon" aria-hidden="true">≋</div><h3>驗證證據</h3><p>重視資料時間戳、可重現的比較基準，以及交易成本與回撤等不可忽略的約束。</p><span>VERIFICATION</span></article>
+          <article class="method"><span class="method-num">03</span><div class="method-icon" aria-hidden="true">◎</div><h3>復盤與取捨</h3><p>記錄成功與失敗樣本。不因一次獲利就放大結論，也不把尚未完成的測試寫成成果。</p><span>REVIEW</span></article>
         </div>
+        <div class="capability-strip"><span>實際使用與持續學習</span><div><b>Excel / 試算表</b><b>財務報表閱讀</b><b>TradingView / MT5</b><b>基礎研究回測</b><b>AI 輔助技術實作</b></div></div>
+      </div>
+    </section>
 
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-date">2026-04</div>
-            <div class="timeline-body">
-              <h3>MQL5 EA 實驗期</h3>
-              <ul>
-                <li>盤點 MT5 <code>MQL5/Experts</code> 目錄，整理早期 EA：Institutional / PropFirm / MicroScalp 等。</li>
-                <li>修正 Institutional_EA_v2 trailing stop 過早鎖利問題，將優化紀錄同步到 Obsidian / Zettelkasten。</li>
-                <li>把前 8 個 MQL5 EA port 成 Pine Script v5，開始建立「策略邏輯可遷移」的研究流程。</li>
-              </ul>
-            </div>
-          </article>
+    <section class="section timeline-section" id="timeline">
+      <div class="container timeline-grid">
+        <div><p class="eyebrow">04 — NOTES & MILESTONES</p><h2>在做的事，<br><em>持續更新。</em></h2><p class="timeline-intro">網站記錄的是研究進程，不是即時交易訊號。以下依已知紀錄整理至 2026 年 10 月。</p></div>
+        <ol class="milestones">
+          <li><time datetime="2026-10">2026 / 10</time><div><h3>台股 OHLC 預測研究架構調整</h3><p>規劃 TEJ 歷史資料、ARIMA／TimesFM 比較、walk-forward 與固定盤前預測快照；開發、測試與驗收尚須逐項驗證。</p></div></li>
+          <li><time datetime="2026-10">2026 / 10</time><div><h3>財金研究與金融職涯準備</h3><p>整理川普政策與台灣電子股專題，同時準備銀行／證券實習申請與金融專業資格。</p></div></li>
+          <li><time datetime="2026-09">2026 / 09</time><div><h3>市場研究轉向系統化復盤</h3><p>持續建立台股盤前假說與實際開盤、盤中、盤後對照，重視資料口徑一致與失敗樣本。</p></div></li>
+          <li><time datetime="2026-06">2026 / 06</time><div><h3>交易策略研究的風控決策</h3><p>整理 MT5 策略比較、研究與執行隔離；保留負期望回測及策略停用的紀錄。</p></div></li>
+        </ol>
+      </div>
+    </section>
 
-          <article class="timeline-item">
-            <div class="timeline-date">2026-05 上旬</div>
-            <div class="timeline-body">
-              <h3>Python live strategy + supervisor 成形</h3>
-              <ul>
-                <li>核心策略移到 Python：<code>mt5_xauusd_trend_strategy.py</code>，透過 pymt5linux bridge 連 MT5。</li>
-                <li>建立 <code>active_plan.json</code> 作為策略啟停與參數來源，避免直接手改 live command。</li>
-                <li>加入 supervisor 管理策略子程序，逐步分離 terminal / bridge / supervisor / strategy child 四個健康層。</li>
-              </ul>
-            </div>
-          </article>
+    <section class="contact-section" id="contact">
+      <div class="container contact-layout">
+        <div><p class="eyebrow light">05 — CONNECT</p><h2>把下一次討論，<br>建立在<span>好問題</span>上。</h2><p>對金融市場研究、證券業與銀行實習，以及可以深入學習的合作機會保持開放。</p></div>
+        <div class="contact-actions"><a class="btn btn-lime" href="https://github.com/fu06pi" target="_blank" rel="noopener noreferrer">GitHub / fu06pi <span aria-hidden="true">↗</span></a><p>其他聯絡方式：Telegram @chain4655</p></div>
+      </div>
+    </section>
+  </main>
 
-          <article class="timeline-item">
-            <div class="timeline-date">2026-05 中旬</div>
-            <div class="timeline-body">
-              <h3>Prop / FTMO 風控規則導入</h3>
-              <ul>
-                <li>XAUUSD trend portfolio 加入 daily DD、total DD、profit target、cooldown、max trades 等硬風控。</li>
-                <li>加入 startup warmup bars，避免策略剛重啟就用不完整 context 開倉。</li>
-                <li>建立 close-deal log 與狀態查詢流程，讓 Telegram 狀態回報能追溯 realized PnL 與 pause reason。</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2026-05 下旬</div>
-            <div class="timeline-body">
-              <h3>Live 參數治理與防呆加固</h3>
-              <ul>
-                <li>加入 auto half-close、fee-cover offset、trailing stable minutes、same-direction cooldown。</li>
-                <li>拆分 total max lots 與 per-order lot cap，避免單筆下單過大。</li>
-                <li>加入 Best Day / concentration guard、foreign-position 檢查與 account-switch recovery 流程。</li>
-                <li>MT5 系統以 Git 保存，2026-05-31 發布初版策略系統快照。</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2026-06</div>
-            <div class="timeline-body">
-              <h3>多袖套研究：從 trend-only 轉向 portfolio sleeves</h3>
-              <ul>
-                <li>回測 false-breakout complement：確認單獨策略正期望，但 simple overlay 不適合。</li>
-                <li>確立平行獨立 sleeves 架構：獨立 process、獨立 magic、共享總 exposure cap。</li>
-                <li>Momentum Surfer V2 做週級穩定度清理：M5 版本淘汰，M15 no-trail 暫列研究候選。</li>
-                <li>live 端切到低風險 complement sleeve，後續依決策暫停策略，保留 supervisor / bridge 監控。</li>
-                <li>新增 profit-close 全平冷卻機制：浮盈達門檻後全平並暫停新進場，取代舊半平倉流程。</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="weekly-log" class="section">
-        <p class="eyebrow">Weekly Log</p>
-        <h2>週度更新紀錄</h2>
-        <p class="section-lead">
-          每週彙整量化系統的重要進展、決策與教訓。格式：日期 → 主題 → 要點。
-        </p>
-
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-date">2026-06-08</div>
-            <div class="timeline-body">
-              <h3>研究與實盤分離：策略暫停、ICT/SMC 回測、OKX paper 檢查</h3>
-              <ul>
-                <li>MT5 XAUUSD 主策略完成獲利全平 + 60 分鐘冷卻機制測試，並依決策暫停 active_plan；未自動恢復。</li>
-                <li>ICT / SMC Python MT5 策略完成 dry-run，但一年 XAUUSD M5 回測未過門檻：baseline -13.08%、PF 0.55。</li>
-                <li>OB-only 版本相對較好但仍負期望：-5.76%、PF 0.73；決策是不加入 live plan。</li>
-                <li>OKX paper cycle 正常，小幅正收益；下一步聚焦提高門檻、降低換手與 symbol loss cooldown。</li>
-                <li>TradingView IFVG indicator 已轉為 strategy 版本，可用於回測與後續告警候選。</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2026-06-03</div>
-            <div class="timeline-body">
-              <h3>MT5 風控切換 + 週級回測清理</h3>
-              <ul>
-                <li>FTMO demo 檢查：terminal / bridge / supervisor / strategy child 正常，帳戶無持倉、無掛單</li>
-                <li>趨勢袖套在回撤後停用，改跑低風險 SELL-only false-breakout complement sleeve</li>
-                <li>互補策略 76 週回測：單獨 PF 1.446、max DD -2.94%；組合只能走平行獨立 sleeves</li>
-                <li>Momentum Surfer V2 週級回測：M5 版本淘汰；M15 no-trail 暫列研究候選</li>
-                <li>MT5 cronjob 訊息加入 retention：未來只保留最新 5 則，降低 Telegram topic 噪音</li>
-                <li>決策：不急著恢復高風險 trend sleeve，先用低風險 sleeve 收集穩定性資料</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2026-05-27</div>
-            <div class="timeline-body">
-              <h3>Prop 通關 + FTMO 驗證啟動</h3>
-              <ul>
-                <li>GetLeveraged-Trade $100k demo Challenge 通關 ✅</li>
-                <li>進入 verification 守帳階段，auto half-close >$2000 啟用</li>
-                <li>FTMO demo 帳號開通，開始規則適配驗證</li>
-                <li>Hermes agent provider 報錯修正（openai-codex → OpenRouter fallback）</li>
-                <li>Doomsday 高攻策略原型完成，僅限模擬盤</li>
-                <li>決策：暫緩 Funded 帳號入金 $520，先完成 FTMO demo 全週期</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2026-05-20</div>
-            <div class="timeline-body">
-              <h3>風控升級 + OKX 歸檔</h3>
-              <ul>
-                <li>MT5 supervisor 加入冷啟保護（warmup-bars = 1）</li>
-                <li>OKX April 回測結果出爐：未過門檻，歸檔</li>
-                <li>確立 backtest → paper → review → activation 工作流</li>
-                <li>X bookmarks 審計完成，53 張 A-grade 研究卡</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2026-05-13</div>
-            <div class="timeline-body">
-              <h3>Prop 帳號策略上線</h3>
-              <ul>
-                <li>MT5 XAUUSD trend portfolio 策略部署到 Prop demo</li>
-                <li>加入 daily DD / total DD / profit target / cooldown gates</li>
-                <li>Structured logs + bridge 穩定運行</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="skills" class="section split">
-        <div>
-          <p class="eyebrow">Skills</p>
-          <h2>技能組合</h2>
-        </div>
-        <div class="skill-cloud">
-          <span>Python</span>
-          <span>MT5 / MQL5</span>
-          <span>TradingView Pine</span>
-          <span>Backtesting</span>
-          <span>Risk Management</span>
-          <span>Data Pipeline</span>
-          <span>GitHub Pages</span>
-          <span>CSV / Markdown Reports</span>
-          <span>AI Research Automation</span>
-          <span>Strategy Evaluation</span>
-          <span>Linux / Wine</span>
-          <span>Hermes Agent</span>
-          <span>OKX API</span>
-          <span>Prop Firm Rules</span>
-        </div>
-      </section>
-
-      <section class="section">
-        <p class="eyebrow">Operating Principles</p>
-        <h2>我的交易系統原則</h2>
-        <div class="principles">
-          <div><strong>可驗證</strong><p>每個策略假說都要能被回測、紙交易或小倉實盤驗證。</p></div>
-          <div><strong>可追蹤</strong><p>策略版本、參數、績效、回撤與錯誤都需要留下紀錄。</p></div>
-          <div><strong>可停機</strong><p>自動交易必須有硬風控：日內虧損、總回撤、連虧與異常停機。</p></div>
-        </div>
-      </section>
-
-      <section id="contact" class="section contact-card">
-        <p class="eyebrow">Contact</p>
-        <h2>聯絡 / 合作</h2>
-        <p>如果你對 AI 自動化、量化策略研究、交易系統工程或策略回測有興趣，歡迎聯絡。</p>
-        <div class="contact-list">
-          <a href="https://github.com/fu06pi">GitHub: fu06pi</a>
-          <span>Telegram: @chain4655</span>
-          <span>X / Twitter: 請來信詢問</span>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© <span id="year"></span> Chain. Built with static HTML/CSS. Last updated: 2026-06-08</p>
-    </footer>
-  </div>
+  <footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> CHAIN LAN</span><span>FINANCE × RESEARCH / UPDATED 2026.10.26</span><a href="#top">BACK TO TOP ↑</a></div></footer>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+      var year = document.getElementById('year');
+      if (year) year.textContent = String(new Date().getFullYear());
+      var menu = document.querySelector('.menu-button');
+      var nav = document.getElementById('primary-nav');
+      if (menu && nav) {
+        menu.addEventListener('click', function () {
+          var open = menu.getAttribute('aria-expanded') !== 'true';
+          menu.setAttribute('aria-expanded', String(open));
+          menu.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
+          nav.classList.toggle('is-open', open);
+        });
+        nav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            nav.classList.remove('is-open');
+            menu.setAttribute('aria-expanded', 'false');
+            menu.setAttribute('aria-label', '開啟導覽選單');
+          });
+        });
+      }
+      var filters = document.querySelectorAll('[data-filter]');
+      var projects = document.querySelectorAll('.project[data-category]');
+      filters.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var selected = button.getAttribute('data-filter');
+          filters.forEach(function (other) {
+            var active = other === button;
+            other.classList.toggle('active', active);
+            other.setAttribute('aria-pressed', String(active));
+          });
+          projects.forEach(function (project) {
+            var tags = (project.getAttribute('data-category') || '').split(' ');
+            project.hidden = selected !== 'all' && tags.indexOf(selected) === -1;
+          });
+        });
+      });
+    }());
   </script>
 </body>
 </html>
